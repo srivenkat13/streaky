@@ -11,8 +11,7 @@ submit.addEventListener("click", saveTask);
 
 function saveTask() {
   if (inputVal.value != "") {
-    let currentTask = inputVal.value;
-    allTasks.push(currentTask);
+    allTasks.push(inputVal.value);
     inputVal.value = "";
     renderStreak();
     renderTasks();
