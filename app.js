@@ -14,16 +14,16 @@ function saveTask() {
     let currentTask = inputVal.value;
     allTasks.push(currentTask);
     inputVal.value = "";
-    streak += "🔥";
     renderStreak();
     renderTasks();
   } else {
-    alert("Enter a Task");
+    alert("Enter a Task !!");
   }
 }
 
 function renderStreak() {
-  headingCount.textContent = streak.length / 2;
+  headingCount.textContent = allTasks.length;
+  streak += "🔥";
   displayStreak.textContent = streak;
 }
 
