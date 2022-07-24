@@ -35,7 +35,16 @@ button {
   font-size: 20px;
   cursor: pointer;
 }
-
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+button:nth-child(3) {
+  background-color: lightslategray;
+  border: 2px grey solid;
+}
 button:hover {
   opacity: 0.9;
   transform: scale(1.1);

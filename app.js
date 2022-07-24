@@ -1,26 +1,34 @@
+/* Buttons */
 const submit = document.getElementById("submit");
 const clear = document.getElementById("clear");
+const edit = document.getElementById("edit");
+
 const inputValue = document.getElementById("input");
 const displayStreak = document.getElementById("streak-count");
 const headingCount = document.getElementById("heading-count");
 const taskDetails = document.getElementById("task-details");
-const itemsFromLocalStorage = JSON.parse(localStorage.getItem("task"));
+let itemsFrmLclStrg = JSON.parse(localStorage.getItem("task"));
 
 let allTasks = [];
+let lastTask = "";
 
-if (itemsFromLocalStorage) {
-  allTasks = itemsFromLocalStorage;
+if (itemsFrmLclStrg) {
+  allTasks = itemsFrmLclStrg;
   renderTasks(allTasks);
   renderStreak(allTasks);
 }
 submit.addEventListener("click", saveTask);
 clear.addEventListener("click", clearStorage);
+edit.addEventListener("click", editLast);
 
 function saveTask() {
   if (inputValue.value != "") {
     allTasks.push(inputValue.value);
+    lastTask = inputValue.value;
     localStorage.setItem("task", JSON.stringify(allTasks));
+    localStorage.setItem("last-task", JSON.stringify(lastTask));
     inputValue.value = "";
+    inputValue.setAttribute("placeholder", "Enter the task done");
     renderStreak(allTasks);
     renderTasks(allTasks);
   } else {
@@ -29,10 +37,17 @@ function saveTask() {
 }
 
 function clearStorage() {
-  if (confirm("REMOVE ALL Streak?")) {
-    localStorage.clear();
+  if (confirm("REMOVE All Streaks? 🤔")) {
+    localStorage.removeItem("task");
     location.reload();
   }
+}
+
+function editLast() {
+  inputValue.value = JSON.parse(localStorage.getItem("last-task"));
+  inputValue.setAttribute("placeholder", "Edit the previous task");
+  console.log(inputValue.value);
+  allTasks.pop();
 }
 
 function renderStreak(arr) {
