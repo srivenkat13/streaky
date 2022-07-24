@@ -1,5 +1,6 @@
 const submit = document.getElementById("submit");
-const inputVal = document.getElementById("input");
+const clear = document.getElementById("clear");
+const inputValue = document.getElementById("input");
 const displayStreak = document.getElementById("streak-count");
 const headingCount = document.getElementById("heading-count");
 const taskDetails = document.getElementById("task-details");
@@ -13,16 +14,24 @@ if (itemsFromLocalStorage) {
   renderStreak(allTasks);
 }
 submit.addEventListener("click", saveTask);
+clear.addEventListener("click", clearStorage);
 
 function saveTask() {
-  if (inputVal.value != "") {
-    allTasks.push(inputVal.value);
+  if (inputValue.value != "") {
+    allTasks.push(inputValue.value);
     localStorage.setItem("task", JSON.stringify(allTasks));
-    inputVal.value = "";
+    inputValue.value = "";
     renderStreak(allTasks);
     renderTasks(allTasks);
   } else {
     alert("Enter a Task !!");
+  }
+}
+
+function clearStorage() {
+  if (confirm("REMOVE ALL Streak?")) {
+    localStorage.clear();
+    location.reload();
   }
 }
 
@@ -40,7 +49,7 @@ function renderTasks(arr) {
 
   for (let i = 0; i < arr.length; i++) {
     listItems += `
-        <li> ${arr[i].charAt(0).toUpperCase() + arr[i].slice(1)}.</li>`;
+        <li>${arr[i].charAt(0).toUpperCase() + arr[i].slice(1)}.</li>`;
   }
   taskDetails.innerHTML = listItems;
 }
