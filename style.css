@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Poppins:wght@100;400&display=swap");
 body {
   margin: 0;
   box-sizing: border-box;
@@ -6,6 +7,8 @@ body {
   background: navajowhite;
 }
 h1 {
+  font-family: "Mochiy Pop P One", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
   font-size: 45px;
 }
 input {
@@ -13,6 +16,7 @@ input {
   width: 300px;
   font-weight: lighter;
   font-size: 20px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   border-radius: 5px;
   border: 3px salmon solid;
   text-align: center;
@@ -58,6 +62,7 @@ ul {
 }
 
 li {
-  margin-top: 8px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  /* margin-top: 8px; */
   font-size: 30px;
 }
